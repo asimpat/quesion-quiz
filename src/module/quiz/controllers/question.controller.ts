@@ -12,7 +12,6 @@ export class QuestionController {
     @Post()
     @UsePipes(ValidationPipe)
     async saveQuestion(@Body() question: CreateQuestionDto) {
-
         const quiz = await this.quizService.getQuizById(question.quizId)
         return await this.questionService.createQuestion(question, quiz)
     }

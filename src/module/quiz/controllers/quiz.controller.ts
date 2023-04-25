@@ -8,13 +8,14 @@ export class QuizController {
     constructor(private readonly quizService: QuizService){}
  
     @Get('/')
-    getQuiz(){
-        return this.quizService.getQuiz()
+    async getAllQuiz(){
+        return await this.quizService.getAllQuiz()
     }
 
     @Get(':id')
    async getQuizById(@Param('id', ParseIntPipe) id:number){
-        return await this.quizService.getQuizById(id)
+        const quizId= await this.quizService.getQuizById(id)
+        return quizId
     }
 
 

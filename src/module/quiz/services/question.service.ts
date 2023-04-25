@@ -10,7 +10,6 @@ export class QuestionService {
     constructor(@InjectRepository(Question) private readonly questionRepository:Repository<Question>){}
 
 
-
    async createQuestion(question:CreateQuestionDto, quiz:Quiz):Promise<Question>{
         const newQuestion = await this.questionRepository.save({
             question:question.question
@@ -22,4 +21,11 @@ export class QuestionService {
         return newQuestion
     }
 
+    async getQuestionById(id:number):Promise<Question>{
+        const questionId=await this.questionRepository.findOne({
+            where:{id:id},
+            relations:['quiz','options']
+        })
+        return questionId
+    }
 }

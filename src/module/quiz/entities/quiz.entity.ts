@@ -30,7 +30,7 @@ export class Quiz extends BaseEntity {
     type:'boolean', 
     default: 1,
   })
-  IsActive: Boolean;
+  IsActive: boolean;
 
   @UpdateDateColumn()
   updatedAt: Date;
