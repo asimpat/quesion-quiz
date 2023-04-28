@@ -47,16 +47,21 @@ export class UserController {
     return await this.userService.sendMail();
   }
 
+  // send email
   @Get('email/send')
   async sendEmail() {
     return await this.mailService.sendUserConfirmation();
   }
 
+
+
+  // forget password
   @Get('password/forgot')
   async forgetPassword(@Body() email) {
     return await this.authService.forgetPassword(email);
   }
-
+ 
+  // reset password
   @Post('password/reset')
   async resetPassword(@Body() pass) {
     return await this.authService.resetPassword(pass);
